@@ -11,13 +11,19 @@
 
 
 header {
-    background-color: #e8caff;
+    background-color: #b6b6b6;
     padding: 20px;
 }
 
 header h1 {
     font-size: 32px;
     margin-bottom: 10px;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -31,9 +37,13 @@ nav a:hover {
     color: #9007cf;
 }
 
+#active {
+    color: #9007cf;
+}
+
 main {
     padding: 30px;
-    background-color: #ebdbf7;
+    background-color: #dbdbdb;
 }
 
 section {
@@ -66,6 +76,10 @@ section {
     margin-bottom: 10px;
 }
 
+h2 {
+    font-size: 30px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -90,9 +104,49 @@ footer {
 footer a {
     text-decoration: none;
     font-size: small;
-    color: #a20ab6;
+    color: white;
 }
 
 footer a:hover {
     color: #9007cf;
+}
+
+@media (max-width: 800px) {
+    nav {
+        justify-content: space-between;
+    }
+
+    header h1 {
+        text-align: center;
+    }
+
+    .about img {
+        width: 500px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        font-size: 22px; /* +4px */
+    }
+
+    header h1 {
+        text-align: center;
+    }
+
+    section h2 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    table {
+        font-size: 12px;  /* -4px total */
+    }
 }

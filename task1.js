@@ -1,0 +1,16 @@
+function pow(x, n) {
+    if (!Number.isInteger(n) || n < 1) {
+        return NaN;
+    }
+    let result = 1;
+    for (let i = 0; i < n; i++) {
+        result *= x;
+    }
+    return result;
+}
+
+console.log(pow(2, 3));
+console.log(pow(5, 1));
+console.log(pow(10, 2));
+console.log(pow(7, 0));
+console.log(pow(3, 'abc'));

@@ -128,6 +128,97 @@
       </section>
     </main>
 
+    <section class="order-section">
+      <h2 class="order-title">Оформить заказ</h2>
+    
+      <form action="https://httpbin.org/post" method="post" class="order-form">
+    
+        <div class="order-column">
+          <h3>Ваш заказ</h3>
+    
+          <label for="soup">Выберите суп</label>
+          <select id="soup" name="soup" required>
+            <option value="">Выберите суп</option>
+            <option value="gaspacho">Гаспачо</option>
+            <option value="mushroom">Грибной суп-пюре</option>
+            <option value="norwegian">Норвежский суп</option>
+          </select>
+    
+          <label for="main">Выберите главное блюдо</label>
+          <select id="main" name="main" required>
+            <option value="">Выберите главное блюдо</option>
+            <option value="potatoes_mushrooms">Жареная картошка с грибами</option>
+            <option value="lasagna">Лазанья</option>
+            <option value="chicken_cutlets">Котлеты из курицы с пюре</option>
+          </select>
+    
+          <label for="drink">Выберите напиток</label>
+          <select id="drink" name="drink" required>
+            <option value="">Выберите напиток</option>
+            <option value="orange_juice">Апельсиновый сок</option>
+            <option value="apple_juice">Яблочный сок</option>
+            <option value="carrot_juice">Морковный сок</option>
+          </select>
+    
+          <label for="comment">Комментарий к заказу</label>
+          <textarea id="comment" name="comment" rows="4"></textarea>
+        </div>
+    
+        <div class="order-column">
+          <h3>Ваши данные</h3>
+    
+          <label for="name">Имя</label>
+          <input id="name" name="name" type="text" required>
+    
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+    
+          <label class="checkbox-label">
+            <input type="checkbox" name="subscribe" checked>
+            Хочу получать информацию о новинках и акциях
+          </label>
+    
+          <label for="phone">Телефон</label>
+          <input id="phone" name="phone" type="tel" required pattern="^\+7\d{10}$" placeholder="+7XXXXXXXXXX" title="Введите номер в формате +7XXXXXXXXXX или 8XXXXXXXXXX">
+    
+          <label for="address">Адрес доставки</label>
+          <input id="address" name="address" type="text" required>
+          <p class="constraint">Доставка осуществляется только по Москве</p>
+          
+          <p class="radio-title">Выберите время доставки:</p>
+          <label class="radio-row">
+            <input type="radio" name="delivery" value="fast">
+            <span>Как можно скорее</span>
+          </label>
+          
+          <label class="radio-row">
+            <input type="radio" name="delivery" value="exact">
+            <span>В указанное время</span>
+          </label>
+          
+          
+    
+          <label for="time">Время доставки</label>
+          <input
+            id="time"
+            name="time"
+            type="time"
+            min="07:00"
+            max="23:00"
+            step="300"
+          >
+          <p class="constraint">Доставка осуществляется с 7.00 до 23.00</p>
+    
+          <div class="form-buttons">
+            <button type="reset" class="btn-reset">Сбросить</button>
+            <button type="submit" class="btn-submit">Отправить</button>
+          </div>
+        </div>
+    
+      </form>
+    </section>
+    
+
     <footer id="contacts">
       <p>Телефон: <a href="tel:+79990000000">+7 999 000-00-00</a></p>
       <p>Email: <a href="mailto:info@lunch.ru">info@lunch.ru</a></p>

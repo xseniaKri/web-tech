@@ -65,6 +65,102 @@
     background: #aaaaaa;
 }
 
+
+.order-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .order-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+  
+  .order-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .order-column h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .order-column label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+  }
+  
+  .order-column select,
+  .order-column input,
+  .order-column textarea {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .checkbox-label {
+    display: grid;
+    align-items: start;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  .radio-title {
+    font-size: 16px;
+    margin: 20px 0 10px 0;
+  }
+
+  .radio-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .radio-row input[type="radio"] {
+    margin: 10px 0;
+  }
+  
+  
+
+  .form-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .btn-reset,
+  .btn-submit {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .btn-reset {
+    background: #ddd;
+  }
+  
+  .btn-submit {
+    background: #9007cf;
+    color: white;
+  }
+
+  .constraint {
+    font-style: italic;
+    font-size: 12px;
+  }
+
+
+
 @media (max-width: 800px){
     .products-grid { grid-template-columns: repeat(2,1fr); }
 

@@ -32,6 +32,7 @@ nav a:hover {
 }
 
 main {
+    margin: 10px;
     padding: 30px;
     background-color: #ebdbf7;
 }
@@ -53,6 +54,7 @@ section {
 }
 
 .about p {
+    color: black;
    max-width: 500px; 
 }
 

@@ -1,3 +1,15 @@
+.selected-block {
+  display: none;
+}
+
+.selected-empty {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+
+
 .product-section {
     padding: 30px 40px;
     background: transparent;
@@ -66,6 +78,16 @@
 }
 
 
+.product-card.selected {
+  border: 2px solid;
+  border-color: #9007cf;
+}
+
+.product-card.selected .btn {
+  background: #aaaaaa;
+}
+
+
 .order-section {
     padding: 40px 20px;
     max-width: 1200px;
@@ -85,7 +107,8 @@
   
   .order-column h3 {
     font-size: 22px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .order-column label {

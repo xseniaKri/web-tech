@@ -40,3 +40,5 @@ for (let shift = 1; shift <= 32; shift++) {
 const correctShift = 8;
 const decodedMessage = cesar(encryptedMessage, correctShift, 'decode');
 console.log(`\nПравильная расшифровка: ${decodedMessage}`);
+
+// расшифровка: хакуна матата

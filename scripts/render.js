@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
       main: document.querySelector('.product-section:nth-of-type(2) .products-grid'),
       drink: document.querySelector('.product-section:nth-of-type(3) .products-grid')
     };
+
+    dishes.sort((a, b) => a.name.localeCompare(b.name));
   
     dishes.forEach(dish => {
       const card = document.createElement("div");

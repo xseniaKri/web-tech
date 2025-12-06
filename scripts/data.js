@@ -75,5 +75,5 @@ const dishes = [
     }
   ];
   
-  dishes.sort((a, b) => a.name.localeCompare(b.name));
+
   

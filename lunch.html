@@ -23,18 +23,72 @@
     <main>
       <section class="product-section" data-category="soup">
         <h2>Выберите суп</h2>
+      
+        <div class="filters">
+          <button class="filter-btn" data-kind="fish">Рыбный</button>
+          <button class="filter-btn" data-kind="meat">Мясной</button>
+          <button class="filter-btn" data-kind="veg">Вегетарианский</button>
+          <button class="filter-btn" data-kind="all">Все</button>
+        </div>
+      
         <div class="products-grid"></div>
       </section>
+      
       
       <section class="product-section" data-category="main">
         <h2>Выберите главное блюдо</h2>
+      
+        <div class="filters">
+          <button class="filter-btn" data-kind="fish">Рыбное</button>
+          <button class="filter-btn" data-kind="meat">Мясное</button>
+          <button class="filter-btn" data-kind="veg">Вегетарианское</button>
+          <button class="filter-btn" data-kind="all">Все</button>
+        </div>
+      
         <div class="products-grid"></div>
       </section>
       
-      <section class="product-section" data-category="drink">
-        <h2>Выберите напиток</h2>
+
+      <section class="product-section" data-category="salad">
+        <h2>Выберите салат или стартер</h2>
+      
+        <div class="filters">
+          <button class="filter-btn" data-kind="veg">Вегетарианский</button>
+          <button class="filter-btn" data-kind="meat">Мясной</button>
+          <button class="filter-btn" data-kind="fish">Рыбный</button>
+          <button class="filter-btn" data-kind="all">Все</button>
+        </div>
+      
         <div class="products-grid"></div>
       </section>
+      
+
+      <section class="product-section" data-category="drink">
+        <h2>Выберите напиток</h2>
+      
+        <div class="filters">
+          <button class="filter-btn" data-kind="cold">Холодный</button>
+          <button class="filter-btn" data-kind="hot">Горячий</button>
+          <button class="filter-btn" data-kind="all">Все</button>
+        </div>
+      
+        <div class="products-grid"></div>
+      </section>
+      
+      
+      <section class="product-section" data-category="dessert">
+        <h2>Выберите десерт</h2>
+      
+        <div class="filters">
+          <button class="filter-btn" data-kind="small">Маленькая порция</button>
+          <button class="filter-btn" data-kind="medium">Средняя порция</button>
+          <button class="filter-btn" data-kind="large">Большая порция</button>
+          <button class="filter-btn" data-kind="all">Все</button>
+        </div>
+      
+        <div class="products-grid"></div>
+      </section>
+      
     </main>
 
     <section class="order-section">
@@ -44,18 +98,42 @@
     
         <div class="order-column">
           <h3>Ваш заказ</h3>
-
+        
           <div id="nothing-selected" class="selected-empty">Ничего не выбрано</div>
         
-          <div id="selected-soup" class="selected-block"><h3>Суп:</h3> <span>Суп не выбран</span></div>
-          <div id="selected-main" class="selected-block"><h3>Главное блюдо:</h3> <span>Блюдо не выбрано</span></div>
-          <div id="selected-drink" class="selected-block"><h3>Напиток:</h3>  <span>Напиток не выбран</span></div>
+          <div id="selected-soup" class="selected-block">
+            <h3>Суп:</h3> 
+            <span>Суп не выбран</span>
+          </div>
         
-          <p id="total-price" class="total-price">Итого: <span id="total">0</span> ₽</p>
-    
+          <div id="selected-main" class="selected-block">
+            <h3>Главное блюдо:</h3> 
+            <span>Блюдо не выбрано</span>
+          </div>
+        
+          <div id="selected-salad" class="selected-block">
+            <h3>Салат / стартер:</h3> 
+            <span>Салат не выбран</span>
+          </div>
+        
+          <div id="selected-drink" class="selected-block">
+            <h3>Напиток:</h3>  
+            <span>Напиток не выбран</span>
+          </div>
+        
+          <div id="selected-dessert" class="selected-block">
+            <h3>Десерт:</h3>  
+            <span>Десерт не выбран</span>
+          </div>
+        
+          <p id="total-price" class="total-price">
+            Итого: <span id="total">0</span> ₽
+          </p>
+        
           <label for="comment">Комментарий к заказу</label>
           <textarea id="comment" name="comment" rows="4"></textarea>
         </div>
+        
     
         <div class="order-column">
           <h3>Ваши данные</h3>
@@ -119,6 +197,7 @@
   </div>
   <script src="./scripts/data.js"></script>
   <script src="./scripts/render.js"></script>
+  <script src="./scripts/filters.js"></script>
   <script src="./scripts/order.js"></script>
 </body>
 </html>

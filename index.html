@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математическая игра</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Математическая игра</h1>
+            <div class="game-info">
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">Уровень:</span>
+                        <span id="level-display" class="stat-value">Начальный</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Вопрос:</span>
+                        <span id="question-counter" class="stat-value">1/10</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Правильно:</span>
+                        <span id="correct-counter" class="stat-value correct">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Неправильно:</span>
+                        <span id="incorrect-counter" class="stat-value incorrect">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="start-screen" class="screen active">
+                <h2>Добро пожаловать в математическую игру!</h2>
+                <p>Ответьте на 10 вопросов на каждом уровне сложности.</p>
+                <p>Если вы ответите правильно на 80% вопросов, вы перейдете на следующий уровень.</p>
+                <div class="level-description">
+                    <h3>Уровни сложности:</h3>
+                    <ul>
+                        <li><strong>Начальный:</strong> Арифметические операции</li>
+                        <li><strong>Средний:</strong> Арифметика + сравнение</li>
+                        <li><strong>Продвинутый:</strong> Логические операции и двоичные числа</li>
+                    </ul>
+                </div>
+                <button id="start-btn" class="btn btn-primary">Начать игру</button>
+            </div>
+
+            <div id="game-screen" class="screen">
+                <div class="question-container">
+                    <h2 id="question-text">Вопрос появится здесь</h2>
+                
+                    <div class="answer-form">
+                        <input 
+                            type="text" 
+                            id="answer-input" 
+                            placeholder="Введите ответ"
+                        >
+                        <button id="submit-answer" class="btn btn-primary">
+                            Ответить
+                        </button>
+                    </div>
+                </div>
+                <div class="feedback" id="feedback"></div>
+                
+            </div>
+
+            <div id="result-screen" class="screen">
+                <h2 id="result-title">Результаты игры</h2>
+                <div class="result-content">
+                    <div class="score-display">
+                        <div class="final-score">
+                            <span class="score-label">Итоговый счет:</span>
+                            <span id="final-score" class="score-value">0/10</span>
+                        </div>
+                        <div class="percentage">
+                            <span class="percentage-label">Процент правильных:</span>
+                            <span id="percentage-value" class="percentage-value">0%</span>
+                        </div>
+                    </div>
+                    <p id="result-message"></p>
+                    <div id="level-up-message" class="level-up-message"></div>
+                </div>
+                <div class="result-buttons">
+                    <button id="restart-btn" class="btn btn-secondary">Начать заново</button>
+                    <button id="next-level-btn" class="btn btn-primary">Следующий уровень</button>
+                    <button id="exit-btn" class="btn btn-danger">Выйти из игры</button>
+                </div>
+            </div>
+
+            <div id="end-screen" class="screen">
+                <h2>Поздравляем!</h2>
+                <div class="congratulations">
+                    <p>Вы успешно прошли все уровни игры!</p>
+                    <p>Вы настоящий математический гений!</p>
+                </div>
+                <div class="final-stats">
+                    <h3>Итоговая статистика:</h3>
+                    <p>Всего правильных ответов: <span id="total-correct">0</span></p>
+                    <p>Всего неправильных ответов: <span id="total-incorrect">0</span></p>
+                    <p>Общий процент правильных: <span id="total-percentage">0%</span></p>
+                </div>
+                <button id="play-again-btn" class="btn btn-primary">Играть снова</button>
+            </div>
+        </main>
+    <script src="game.js"></script>
+    </div>
+</body>
+</html>

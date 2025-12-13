@@ -1,3 +1,171 @@
+
+.variant-items .dish span {
+  font-size: 14px;
+  font-weight: normal;
+  color: #000;
+}
+
+.variant-items .dish.dessert-note small {
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+  display: block;
+  text-align: center;
+}
+
+
+.variant-card h3 {
+  text-align: center;
+}
+
+
+.variants-section {
+  padding: 24px;
+  margin: 24px 0;
+}
+.variants-section h2 {
+  margin-bottom: 12px;
+}
+
+.variants-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.variant-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.variant-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  gap: 8px;
+}
+
+.variant-items .dish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+}
+
+.variant-items .dish img {
+  width: 100%;
+  max-width: 120px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: transform 180ms ease;
+  will-change: transform;
+  margin-bottom: 6px;
+}
+
+.variant-items .dish img:hover {
+  transform: translateY(-6px) scale(1.05);
+}
+
+.dessert-note img {
+  width: 100%;
+  max-width: 120px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: transform 180ms ease;
+  will-change: transform;
+  margin-bottom: 6px;
+}
+
+.dessert-note img:hover{
+  transform: translateY(-6px) scale(1.05);
+}
+
+.variant-items .dessert-note {
+  font-size: 12px;
+  color: #666;
+}
+
+@media (max-width: 900px) {
+  .variants-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .variants-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* затемнение фона */
+.notification-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* окно уведомления */
+.notification {
+  background: #fff;
+  padding: 20px 22px;
+  border-radius: 10px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+}
+
+/* иконка */
+.notification img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+/* текст */
+.notification p {
+  margin: 0 0 16px;
+  color: #444;
+  font-size: 16px;
+}
+
+/* кнопка */
+.notification button {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 2px solid #9007cf;
+  background: #9007cf;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 150ms, color 150ms;
+}
+
+/* hover */
+.notification button:hover {
+  background: #fff;
+  color: #9007cf;
+}
+
+
+
+
+
 .filters {
   display: flex;
   gap: 10px;

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const categories = ["soup", "main", "salad", "drink", "dessert"];
 
+    // 🔥 ВАЖНО: теперь selected доступен в submit
     const selected = {
         soup: null,
         main: null,
@@ -37,32 +38,32 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const totalEl = document.getElementById("total");
+    const form = document.querySelector(".order-form");
 
     function updateVisibility() {
         const anySelected = Object.values(selected).some(v => v !== null);
 
         if (!anySelected) {
             containers.empty.style.display = "block";
-            categories.forEach(cat => {
-                containers[cat].style.display = "none";
-            });
+            categories.forEach(cat => containers[cat].style.display = "none");
             containers.price.style.display = "none";
-            totalEl.style.display = "none";
-        } else {
-            containers.empty.style.display = "none";
-            categories.forEach(cat => {
-                containers[cat].style.display = "block";
-                if (!selected[cat]) {
-                    if (cat === "drink") blocks[cat].textContent = "Напиток не выбран";
-                    else if (cat === "soup") blocks[cat].textContent = "Суп не выбран";
-                    else if (cat === "salad") blocks[cat].textContent = "Салат не выбран";
-                    else if (cat === "dessert") blocks[cat].textContent = "Десерт не выбран";
-                    else blocks[cat].textContent = "Блюдо не выбрано";
-                }
-            });
-            containers.price.style.display = "block";
-            totalEl.style.display = "inline";
+            return;
         }
+
+        containers.empty.style.display = "none";
+        categories.forEach(cat => {
+            containers[cat].style.display = "block";
+            if (!selected[cat]) {
+                blocks[cat].textContent =
+                    cat === "soup" ? "Суп не выбран" :
+                    cat === "main" ? "Блюдо не выбрано" :
+                    cat === "salad" ? "Салат не выбран" :
+                    cat === "drink" ? "Напиток не выбран" :
+                    "Десерт не выбран";
+            }
+        });
+
+        containers.price.style.display = "block";
     }
 
     function updateTotal() {
@@ -80,8 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const dish = dishes.find(d => d.keyword === keyword);
         const category = dish.category;
 
-        if (!categories.includes(category)) return; // защита
-
         if (selectedCards[category]) {
             selectedCards[category].classList.remove("selected");
         }
@@ -96,5 +95,68 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTotal();
     });
 
+    // ✅ ПРОВЕРКА КОМБО
+    form.addEventListener("submit", (event) => {
+
+        const hasSoup = !!selected.soup;
+        const hasMain = !!selected.main;
+        const hasSalad = !!selected.salad;
+        const hasDrink = !!selected.drink;
+        const hasDessert = !!selected.dessert;
+
+        if (!hasSoup && !hasMain && !hasSalad && !hasDrink && !hasDessert) {
+            event.preventDefault();
+            showNotification("Ничего не выбрано. Выберите блюда для заказа", "nothing");
+            return;
+        }
+
+        if (!hasMain && (hasDrink || hasDessert)) {
+            event.preventDefault();
+            showNotification("Выберите главное блюдо", "main");
+            return;
+        }
+
+        if (hasSoup && !hasMain && !hasSalad) {
+            event.preventDefault();
+            showNotification("Выберите главное блюдо/салат/стартер", "main-salad");
+            return;
+        }
+
+        if (hasSalad && !hasSoup && !hasMain) {
+            event.preventDefault();
+            showNotification("Выберите суп или главное блюдо", "soup-main");
+            return;
+        }
+
+        if ((hasSoup || hasMain) && !hasDrink) {
+            event.preventDefault();
+            showNotification("Выберите напиток", "drink");
+            return;
+        }
+    });
+
     updateVisibility();
 });
+
+
+function showNotification(text, type) {
+    const old = document.querySelector(".notification-overlay");
+    if (old) old.remove();
+
+    const overlay = document.createElement("div");
+    overlay.className = "notification-overlay";
+
+    const modal = document.createElement("div");
+    modal.className = "notification";
+
+    const p = document.createElement("p");
+    p.textContent = text;
+
+    const btn = document.createElement("button");
+    btn.textContent = "Окей";
+    btn.onclick = () => overlay.remove();
+
+    modal.append(p, btn);
+    overlay.append(modal);
+    document.body.append(overlay);
+}

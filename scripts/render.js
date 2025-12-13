@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // важные data-атрибуты для фильтрации и других сценариев
     card.dataset.dish = dish.keyword;
-    card.dataset.kind = dish.kind ?? "";        // kind нужен фильтрам
+    card.dataset.kind = dish.kind ?? "";
     card.dataset.category = dish.category ?? "";
 
     card.innerHTML = `

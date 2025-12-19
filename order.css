@@ -1,9 +1,13 @@
 /* ===== Страница оформления заказа ===== */
+body {
+    background-color: #dbdbdb;
+}
 
 .order-page {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #dbdbdb;
 }
 
 .order-content {

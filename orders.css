@@ -1,0 +1,474 @@
+
+/* Основные стили страницы заказов */
+.orders-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.orders-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #9007cf;
+}
+
+/* Определение цветовой палитры на основе #9007cf */
+:root {
+    --primary-color: #9007cf;
+    --primary-dark: #7a06b0;
+    --primary-light: #b347e5;
+    --primary-bg: rgba(144, 7, 207, 0.1);
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --text-color: #333;
+    --text-muted: #666;
+    --border-color: #eee;
+    --background-color: #f8f9fa;
+}
+
+/* Список заказов */
+.orders-list {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.loading {
+    padding: 40px;
+    text-align: center;
+    color: #666;
+}
+
+.empty-orders {
+    padding: 40px;
+    text-align: center;
+    color: #666;
+}
+
+/* Карточка заказа */
+.order-card {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    transition: background-color 0.2s;
+}
+
+.order-card:hover {
+    background-color: #f8f9fa;
+}
+
+.order-card:last-child {
+    border-bottom: none;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+.order-number {
+    font-weight: bold;
+    color: #9007cf;
+}
+
+.order-date {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.order-details {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.order-items {
+    color: #333;
+}
+
+.order-cost {
+    font-weight: bold;
+    color: black;
+}
+
+.order-delivery-time {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Кнопки действий */
+.btn-icon {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+}
+
+
+.btn-info {
+    color: #9007cf;
+    border: 1px solid #9007cf;
+}
+
+.btn-info:hover {
+    background-color: #9007cf;
+    color: white;
+}
+
+.btn-edit {
+    color: #2874a7;
+    border: 1px solid #2874a7;
+}
+
+.btn-edit:hover {
+    background-color: #1c5a83;
+    color: white;
+}
+
+.btn-delete {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Модальные окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Кнопки модальных окон */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+
+.btn-primary {
+    background-color: #9007cf;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #7a06b0;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+
+/* Секция информации о заказе в модальном окне редактирования */
+.order-info-section {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.order-info-section h4 {
+    margin: 0 0 15px 0;
+    color: #9007cf;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.order-info-section .order-detail-item {
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 10px;
+}
+
+.order-info-section .order-detail-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Форма редактирования */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-row label {
+    font-weight: 500;
+    color: #333;
+}
+
+.form-row input,
+.form-row textarea,
+.form-row select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus {
+    outline: none;
+    border-color: #9007cf;
+    box-shadow: 0 0 0 2px rgba(144, 7, 207, 0.25);
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.delete-warning {
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Детали заказа в модальном окне */
+.order-detail-item {
+    margin-bottom: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.order-detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #555;
+    margin-right: 10px;
+}
+
+.detail-value {
+    color: #333;
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: none;
+    align-items: center;
+    gap: 10px;
+    z-index: 2000;
+    max-width: 300px;
+}
+
+.notification.error {
+    background-color: #dc3545;
+}
+
+.notification.warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.notification.show {
+    display: flex;
+    animation: notificationSlideIn 0.3s ease-out;
+}
+
+@keyframes notificationSlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    font-size: 18px;
+    margin-left: auto;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .order-details {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .order-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .modal-body,
+    .modal-header,
+    .modal-footer {
+        padding: 15px;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .orders-section {
+        padding: 10px;
+    }
+    
+    .order-card {
+        padding: 15px;
+    }
+    
+    .btn-icon {
+        padding: 6px 8px;
+        font-size: 0.8em;
+    }
+}

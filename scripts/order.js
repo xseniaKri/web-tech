@@ -93,23 +93,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
-    // Проверка валидности комбо (без десерта)
         function isValidCombo() {
-            // Получаем текущий заказ без десерта
             const hasSoup = !!order.soup;
             const hasMain = !!order["main-course"];
             const hasSalad = !!order.salad;
             const hasDrink = !!order.drink;
     
-            // Обязательное условие: должен быть напиток
+
             if (!hasDrink) return false;
     
-            // Допустимые комбинации согласно заданию
-            if (hasSoup && hasMain && hasSalad && hasDrink) return true; // Полный комбо
-            if (hasSoup && hasMain && hasDrink) return true; // Суп + главное + напиток
-            if (hasSoup && hasSalad && hasDrink) return true; // Суп + салат + напиток  
-            if (hasMain && hasSalad && hasDrink) return true; // Главное + салат + напиток
-            if (hasMain && hasDrink) return true; // Только главное + напиток
+
+            if (hasSoup && hasMain && hasSalad && hasDrink) return true;
+            if (hasSoup && hasMain && hasDrink) return true;
+            if (hasSoup && hasSalad && hasDrink) return true;
+            if (hasMain && hasSalad && hasDrink) return true;
+            if (hasMain && hasDrink) return true;
     
             return false;
         }

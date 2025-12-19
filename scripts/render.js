@@ -37,7 +37,7 @@ const categoryMap = {
 function renderDishes() {
     const sections = {
         soup: document.querySelector('[data-category="soup"] .products-grid'),
-        main: document.querySelector('[data-category="main-course"] .products-grid'),
+        main: document.querySelector('[data-category="main"] .products-grid'),
         salad: document.querySelector('[data-category="salad"] .products-grid'),
         drink: document.querySelector('[data-category="drink"] .products-grid'),
         dessert: document.querySelector('[data-category="dessert"] .products-grid')

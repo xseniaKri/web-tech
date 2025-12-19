@@ -15,6 +15,7 @@
       <nav class="main-nav">
         <a href="index.html">Главная</a>
         <a href="lunch.html" id="active">Собрать ланч</a>
+        <a href="order.html">Оформить заказ</a>
         <a href="">Заказы</a>
         <a href="#contacts">Контакты</a>
       </nav>
@@ -100,7 +101,7 @@
       </section>
       
       
-      <section class="product-section" data-category="main">
+      <section class="product-section" data-category="main-course">
         <h2>Выберите главное блюдо</h2>
       
         <div class="filters">
@@ -155,104 +156,6 @@
       </section>
       
     </main>
-
-    <section class="order-section">
-      <h2 class="order-title">Оформить заказ</h2>
-
-      <form action="https://httpbin.org/post" method="post" class="order-form">
-    
-        <div class="order-column">
-          <h3>Ваш заказ</h3>
-        
-          <div id="nothing-selected" class="selected-empty">Ничего не выбрано</div>
-        
-          <div id="selected-soup" class="selected-block">
-            <h3>Суп:</h3> 
-            <span>Суп не выбран</span>
-          </div>
-        
-          <div id="selected-main" class="selected-block">
-            <h3>Главное блюдо:</h3> 
-            <span>Блюдо не выбрано</span>
-          </div>
-        
-          <div id="selected-salad" class="selected-block">
-            <h3>Салат / стартер:</h3> 
-            <span>Салат не выбран</span>
-          </div>
-        
-          <div id="selected-drink" class="selected-block">
-            <h3>Напиток:</h3>  
-            <span>Напиток не выбран</span>
-          </div>
-        
-          <div id="selected-dessert" class="selected-block">
-            <h3>Десерт:</h3>  
-            <span>Десерт не выбран</span>
-          </div>
-        
-          <p id="total-price" class="total-price">
-            Итого: <span id="total">0</span> ₽
-          </p>
-        
-          <label for="comment">Комментарий к заказу</label>
-          <textarea id="comment" name="comment" rows="4"></textarea>
-        </div>
-        
-    
-        <div class="order-column">
-          <h3>Ваши данные</h3>
-    
-          <label for="name">Имя</label>
-          <input id="name" name="name" type="text" required>
-    
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
-    
-          <label class="checkbox-label">
-            <input type="checkbox" name="subscribe" checked>
-            Хочу получать информацию о новинках и акциях
-          </label>
-    
-          <label for="phone">Телефон</label>
-          <input id="phone" name="phone" type="tel" required pattern="^\+7\d{10}$" placeholder="+7XXXXXXXXXX" title="Введите номер в формате +7XXXXXXXXXX или 8XXXXXXXXXX">
-    
-          <label for="address">Адрес доставки</label>
-          <input id="address" name="address" type="text" required>
-          <p class="constraint">Доставка осуществляется только по Москве</p>
-          
-          <p class="radio-title">Выберите время доставки:</p>
-          <label class="radio-row">
-            <input type="radio" name="delivery" value="fast">
-            <span>Как можно скорее</span>
-          </label>
-          
-          <label class="radio-row">
-            <input type="radio" name="delivery" value="exact">
-            <span>В указанное время</span>
-          </label>
-          
-          
-    
-          <label for="time">Время доставки</label>
-          <input
-            id="time"
-            name="time"
-            type="time"
-            min="07:00"
-            max="23:00"
-            step="300"
-          >
-          <p class="constraint">Доставка осуществляется с 7.00 до 23.00</p>
-    
-          <div class="form-buttons">
-            <button type="reset" class="btn-reset">Сбросить</button>
-            <button type="submit" class="btn-submit">Отправить</button>
-          </div>
-        </div>
-    
-      </form>
-    </section>
     
 
     <footer id="contacts">
@@ -260,9 +163,9 @@
       <p>Email: <a href="mailto:info@lunch.ru">info@lunch.ru</a></p>
   </footer>
   </div>
-  <script src="./scripts/data.js"></script>
+  <script src="./scripts/storage.js"></script>
   <script src="./scripts/render.js"></script>
   <script src="./scripts/filters.js"></script>
-  <script src="./scripts/order.js"></script>
+  <script src="./scripts/lunch-order-panel.js"></script>
 </body>
 </html>

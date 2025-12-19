@@ -390,6 +390,7 @@
     }
 }
 
+
 @media (max-width: 600px){
     header h1 {
         text-align: center;
@@ -404,4 +405,43 @@
 
     .products-grid { grid-template-columns: 1fr; }
 
+}
+
+/* ===== Панель перехода к оформлению заказа ===== */
+.go-to-order-panel {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid #ccc;
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.go-to-order-panel span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.go-to-order-panel .btn-go-to-order {
+    background: #9007cf;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 150ms;
+}
+
+.go-to-order-panel .btn-go-to-order:hover:not(.disabled) {
+    background: #7605a8;
+}
+
+.go-to-order-panel .btn-go-to-order.disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
 }

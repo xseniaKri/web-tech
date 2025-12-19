@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".product-section");
   
@@ -32,9 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const cards = grid.querySelectorAll(".product-card");
   
         cards.forEach(card => {
-          const dish = card.dataset.kind;
+          const dishKind = card.dataset.kind;
   
-          if (dish === kind || kind === "all") {
+          if (dishKind === kind || kind === "all") {
             card.style.display = "";
           } else {
             card.style.display = "none";
@@ -48,4 +49,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+  
   

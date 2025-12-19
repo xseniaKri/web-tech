@@ -1,85 +1,123 @@
-// ====== Глобальный массив блюд (заполняется через API) ======
+
+// ====== Глобальный массив блюд ======
 let dishes = [];
+window.dishes = dishes;
 
-// ====== Загрузка блюд с сервера ======
+// ====== Конфигурация ======
+const API_URL = "https://edu.std-900.ist.mospolytech.ru/labs/api/dishes";
+const API_KEY = "b634db2f-f767-4d3e-a0c0-341ca2959925";
+
+
+
+const categories = ["soup", "main-course", "salad", "drink", "dessert"];
+
+
+// ====== Работа с localStorage ======
+// Функции getOrderFromStorage и saveOrderToStorage определены в storage.js
+
+
+// ====== Загрузка блюд ======
 async function loadDishes() {
-    const API_URL = "https://edu.std-900.ist.mospolytech.ru/labs/api/dishes";
-
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}?api_key=${API_KEY}`);
+        if (!response.ok) throw new Error("Ошибка загрузки блюд");
 
-        if (!response.ok) {
-            throw new Error("Ошибка загрузки данных о блюдах");
-        }
 
-        const data = await response.json();
-
-        // сохраняем данные в глобальный массив
-        dishes = data;
-
-        // отрисовываем блюда после загрузки
+        dishes = await response.json();
+        window.dishes = dishes; // Обновляем глобальную переменную
         renderDishes();
+
     } catch (error) {
         console.error("Ошибка при загрузке блюд:", error);
     }
 }
 
-const categoryMap = {
-  "soup": "soup",
-  "main-course": "main",
-  "salad": "salad",
-  "drink": "drink",
-  "dessert": "dessert"
-};
-
-
-// ====== Отрисовка карточек блюд ======
+// ====== Отрисовка карточек ======
 function renderDishes() {
     const sections = {
         soup: document.querySelector('[data-category="soup"] .products-grid'),
-        main: document.querySelector('[data-category="main"] .products-grid'),
+        "main-course": document.querySelector('[data-category="main-course"] .products-grid'),
         salad: document.querySelector('[data-category="salad"] .products-grid'),
         drink: document.querySelector('[data-category="drink"] .products-grid'),
         dessert: document.querySelector('[data-category="dessert"] .products-grid')
     };
 
-    // очищаем секции перед рендером
     Object.values(sections).forEach(section => {
         if (section) section.innerHTML = "";
     });
 
-    // сортировка по названию
-    dishes.sort((a, b) => a.name.localeCompare(b.name, "ru"));
 
-    dishes.forEach(dish => {
-        const normalizedCategory = categoryMap[dish.category];
-        const section = sections[normalizedCategory];
-        if (!section) return;
+    const order = window.getOrderFromStorage();
 
-        const card = document.createElement("div");
-        card.className = "product-card";
+    dishes
+        .sort((a, b) => a.name.localeCompare(b.name, "ru"))
+        .forEach(dish => {
 
-        // data-атрибуты — используются в order.js и filters.js
-        card.dataset.dish = dish.keyword;
-        card.dataset.kind = dish.kind ?? "";
-        card.dataset.category = normalizedCategory ?? "";
+            const normalizedCategory = dish.category;
+            const section = sections[normalizedCategory];
+            if (!section) return;
 
 
-        card.innerHTML = `
-            <img src="${dish.image}" alt="${dish.name}">
-            <p class="price">${dish.price}₽</p>
-            <p class="name">${dish.name}</p>
-            <div class="product-bottom">
-                <p class="weight">${dish.count}</p>
-                <button class="btn">Добавить</button>
-            </div>
-        `;
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.dataset.dish = dish.keyword;
+            card.dataset.category = normalizedCategory;
+            card.dataset.kind = dish.kind;
 
-        section.appendChild(card);
-    });
+            const isSelected = order[normalizedCategory] === dish.id;
+
+            card.innerHTML = `
+                <img src="${dish.image}" alt="${dish.name}">
+                <p class="price">${dish.price}₽</p>
+                <p class="name">${dish.name}</p>
+                <div class="product-bottom">
+                    <p class="weight">${dish.count}</p>
+                    <button class="btn">
+                        ${isSelected ? "Выбрано" : "Добавить"}
+                    </button>
+                </div>
+            `;
+
+            if (isSelected) {
+                card.classList.add("selected");
+            }
+
+            section.appendChild(card);
+        });
 }
 
-// ====== Запуск загрузки при старте страницы ======
+// ====== Обработка выбора блюда ======
+document.body.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("btn")) return;
+
+    const card = e.target.closest(".product-card");
+    const category = card.dataset.category;
+    const dish = dishes.find(d => d.keyword === card.dataset.dish);
+    if (!dish) return;
+
+
+    const order = window.getOrderFromStorage();
+
+    // снимаем выделение в текущей категории
+    document
+        .querySelectorAll(`.product-card[data-category="${category}"]`)
+        .forEach(c => {
+            c.classList.remove("selected");
+            c.querySelector(".btn").textContent = "Добавить";
+        });
+
+    // сохраняем выбор
+    order[category] = dish.id;
+    window.saveOrderToStorage(order);
+
+    // выделяем текущую карточку
+    card.classList.add("selected");
+    card.querySelector(".btn").textContent = "Выбрано";
+});
+
+// ====== Инициализация ======
 document.addEventListener("DOMContentLoaded", () => {
     loadDishes();
+    document.dispatchEvent(new CustomEvent("dishesLoaded"));
+
 });

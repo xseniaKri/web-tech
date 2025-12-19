@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Оформить заказ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lunch.css">
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+<header>
+    <h1 class="site-title">Оформление заказа</h1>
+    <nav class="main-nav">
+        <a href="index.html">Главная</a>
+        <a href="lunch.html">Собрать ланч</a>
+        <a href="order.html" id="active">Оформить заказ</a>
+        <a href="">Заказы</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+</header>
+
+<main class="order-page">
+
+    <!-- ================= СОСТАВ ЗАКАЗА ================= -->
+    <section class="order-content">
+        <h2>Состав заказа</h2>
+
+        <div id="order-empty" class="selected-empty">
+            Ничего не выбрано.
+            Чтобы добавить блюда в заказ, перейдите на
+            <a href="lunch.html">Собрать ланч</a>.
+        </div>
+
+        <div id="order-items" class="products-grid"></div>
+    </section>
+
+    <!-- ================= ОФОРМЛЕНИЕ ЗАКАЗА ================= -->
+    <section class="order-form-section">
+        <h2>Оформление заказа</h2>
+
+        <form class="order-form">
+
+            <!-- Левая колонка -->
+            <div class="order-column">
+                <h3>Ваш заказ</h3>
+
+                <div id="selected-soup" class="selected-block">
+                    <h4>Суп</h4>
+                    <span>Не выбран</span>
+                </div>
+
+                <div id="selected-main-course" class="selected-block">
+                    <h4>Главное блюдо</h4>
+                    <span>Не выбрано</span>
+                </div>
+
+                <div id="selected-salad" class="selected-block">
+                    <h4>Салат / стартер</h4>
+                    <span>Не выбран</span>
+                </div>
+
+                <div id="selected-drink" class="selected-block">
+                    <h4>Напиток</h4>
+                    <span>Не выбран</span>
+                </div>
+
+                <div id="selected-dessert" class="selected-block">
+                    <h4>Десерт</h4>
+                    <span>Не выбран</span>
+                </div>
+
+                <p class="total-price">
+                    Итого: <span id="total">0</span> ₽
+                </p>
+            </div>
+
+            <!-- Правая колонка -->
+            <div class="order-column">
+
+                <label for="full_name">Имя</label>
+                <input id="full_name" name="full_name" type="text" required>
+
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" name="subscribe" value="1" checked>
+                    Хочу получать информацию о новинках и акциях
+                </label>
+
+                <label for="phone">Телефон</label>
+                <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    pattern="^\+7\d{10}$"
+                    placeholder="+7XXXXXXXXXX"
+                >
+
+                <label for="delivery_address">Адрес доставки</label>
+                <input id="delivery_address" name="delivery_address" type="text" required>
+
+                <p class="radio-title">Время доставки</p>
+
+                <label class="radio-row">
+                    <input type="radio" name="delivery_type" value="now" required>
+                    Как можно скорее
+                </label>
+
+                <label class="radio-row">
+                    <input type="radio" name="delivery_type" value="by_time">
+                    В указанное время
+                </label>
+
+                <label for="delivery_time">Время доставки</label>
+                <input
+                    id="delivery_time"
+                    name="delivery_time"
+                    type="time"
+                    min="07:00"
+                    max="23:00"
+                    step="300"
+                >
+
+                <label for="comment">Комментарий</label>
+                <textarea id="comment" name="comment" rows="4"></textarea>
+
+                <div class="form-buttons">
+                    <button type="reset" class="btn-reset">Сбросить</button>
+                    <button type="submit" class="btn-submit">Отправить</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</main>
+
+<footer id="contacts">
+    <p>Телефон: <a href="tel:+79990000000">+7 999 000-00-00</a></p>
+    <p>Email: <a href="mailto:info@lunch.ru">info@lunch.ru</a></p>
+</footer>
+
+
+<!-- ===== Скрипты ===== -->
+<script src="./scripts/storage.js"></script>
+<script src="./scripts/render.js"></script>
+<script src="./scripts/order.js"></script>
+
+</body>
+</html>
